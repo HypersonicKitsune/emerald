@@ -12,6 +12,7 @@
 #include "./common.h"
 #include "./macros.h"
 #include "./geoitems.h"
+#include "./events.h"
 
 // allegro's stuff
 ALLEGRO_DISPLAY     *display  = NULL;
@@ -23,7 +24,6 @@ Vector vec; // current player's translation vector
 bool mainloop = true;
 bool redraw   = true;
 
-enum{KEY_UP, KEY_RIGHT, KEY_DOWN, KEY_LEFT, KEY_MAX};
 bool key[KEY_MAX] = {0};
 
 
@@ -44,9 +44,7 @@ int main()
     
 	pl = set_point_coordinates(SCREEN_W/2, SCREEN_H/2);
 	vec = set_vec_coordinates(0, 0);
-	
-	// vec
-	float i = 0.0;
+
 	
 	while(mainloop)
     {
@@ -58,46 +56,8 @@ int main()
         {
             mainloop = false;
         }
-        else if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
-        {
-            switch(ev.keyboard.keycode)
-            {
-                case ALLEGRO_KEY_UP:
-                    key[KEY_UP] = true;
-                    break;
-                case ALLEGRO_KEY_DOWN:
-                    key[KEY_DOWN] = true;
-                    break;
-                case ALLEGRO_KEY_LEFT:
-                    key[KEY_LEFT] = true;
-                    break;
-                case ALLEGRO_KEY_RIGHT:
-                    key[KEY_RIGHT] = true;
-                    break;
-                case ALLEGRO_KEY_ESCAPE:
-                    mainloop = false;
-                    break;
-            }
-        }
-        else if(ev.type == ALLEGRO_EVENT_KEY_UP)
-        {
-            switch(ev.keyboard.keycode)
-            {
-                case ALLEGRO_KEY_UP:
-                    key[KEY_UP] = false;
-                    break;
-                case ALLEGRO_KEY_DOWN:
-                    key[KEY_DOWN] = false;
-                    break;
-                case ALLEGRO_KEY_LEFT:
-                    key[KEY_LEFT] = false;
-                    break;
-                case ALLEGRO_KEY_RIGHT:
-                    key[KEY_RIGHT] = false;
-                    break;
-            }
-        }
-        else if(ev.type == ALLEGRO_EVENT_TIMER)
+		read_controls(key, ev);
+        if(ev.type == ALLEGRO_EVENT_TIMER)
         {
 			if(key[KEY_UP])
 				vec = set_vec_pol_coordinates(10, -PI/2);
@@ -109,6 +69,10 @@ int main()
 				vec = set_vec_pol_coordinates(10, PI*2);
 			else
 				vec = set_vec_coordinates(0, 0);
+			
+			// close mainloop when 'escape' is pressed
+			if(key[KEY_ESCAPE])
+				mainloop = false;
             
             point_translation(&pl, vec);
 
