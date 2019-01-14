@@ -32,7 +32,6 @@ int main()
 	init_allegro();
 	display = al_create_display(SCREEN_W, SCREEN_H);
 
-	al_install_keyboard();
     ev_queue = al_create_event_queue();
     timer = al_create_timer(1.0/25);
     
