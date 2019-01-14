@@ -29,6 +29,11 @@
 #include "events.h"
 
 
+/*
+ * void read_controls(bool key[], ALLEGRO_EVENT ev)
+ * 
+ * Gets events in `ev` ; writes active events in `key`.
+ */
 void read_controls(bool key[], ALLEGRO_EVENT ev)
 {
 	if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
