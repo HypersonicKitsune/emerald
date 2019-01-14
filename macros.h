@@ -25,6 +25,11 @@
 #define MACROS_H
 
 
+/*** GENERAL PURPOSE ***/
+
+#define PI 3.1415927
+
+
 /*** GRAPHICS MACROS ***/
 
 // screen dimensions
