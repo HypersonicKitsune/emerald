@@ -1,5 +1,5 @@
 /***
- * Current experiment based on the engine: an animated square
+ * Current experiment based on the engine: an mobile square
  ***/
 
 #include <stdio.h>
@@ -22,6 +22,9 @@ Point pl; // player's position
 Vector vec; // current player's translation vector
 bool mainloop = true;
 bool redraw   = true;
+
+enum{KEY_UP, KEY_RIGHT, KEY_DOWN, KEY_LEFT, KEY_MAX};
+bool key[KEY_MAX] = {0};
 
 
 int main()
@@ -55,9 +58,57 @@ int main()
         {
             mainloop = false;
         }
+        else if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
+        {
+            switch(ev.keyboard.keycode)
+            {
+                case ALLEGRO_KEY_UP:
+                    key[KEY_UP] = true;
+                    break;
+                case ALLEGRO_KEY_DOWN:
+                    key[KEY_DOWN] = true;
+                    break;
+                case ALLEGRO_KEY_LEFT:
+                    key[KEY_LEFT] = true;
+                    break;
+                case ALLEGRO_KEY_RIGHT:
+                    key[KEY_RIGHT] = true;
+                    break;
+                case ALLEGRO_KEY_ESCAPE:
+                    mainloop = false;
+                    break;
+            }
+        }
+        else if(ev.type == ALLEGRO_EVENT_KEY_UP)
+        {
+            switch(ev.keyboard.keycode)
+            {
+                case ALLEGRO_KEY_UP:
+                    key[KEY_UP] = false;
+                    break;
+                case ALLEGRO_KEY_DOWN:
+                    key[KEY_DOWN] = false;
+                    break;
+                case ALLEGRO_KEY_LEFT:
+                    key[KEY_LEFT] = false;
+                    break;
+                case ALLEGRO_KEY_RIGHT:
+                    key[KEY_RIGHT] = false;
+                    break;
+            }
+        }
         else if(ev.type == ALLEGRO_EVENT_TIMER)
         {
-            vec = set_vec_pol_coordinates(10, i+=0.1);
+			if(key[KEY_UP])
+				vec = set_vec_pol_coordinates(10, -PI/2);
+			else if(key[KEY_DOWN])
+				vec = set_vec_pol_coordinates(10, PI/2);
+            else if(key[KEY_LEFT])
+				vec = set_vec_pol_coordinates(10, PI);
+            else if(key[KEY_RIGHT])
+				vec = set_vec_pol_coordinates(10, PI*2);
+			else
+				vec = set_vec_coordinates(0, 0);
             
             point_translation(&pl, vec);
 
@@ -74,23 +125,6 @@ int main()
             redraw = false;
         }
 	}
-    
-    /**al_clear_to_color(GRAY);
-     * 
-    al_draw_filled_rectangle(pl.x, pl.y, pl.x+32, pl.y+32, BLUE);
-    al_flip_display();
-    
-    al_rest(1);
-    
-    point_translation(&pl, vec);
-    
-    al_clear_to_color(GRAY);
-    al_draw_filled_rectangle(pl.x, pl.y, pl.x+32, pl.y+32, BLUE);
-    al_flip_display();
-	
-	al_rest(5);
-	
-	al_destroy_display(display);**/
 	
 	al_destroy_timer(timer);
 	al_destroy_event_queue(ev_queue);
