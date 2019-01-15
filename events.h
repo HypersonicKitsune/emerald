@@ -20,21 +20,18 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  *
  *********************/
+ 
+ 
+#ifndef EVENTS_H
+#define EVENTS_H
 
 
 /*** KEY CODES ***/
 
 enum{KEY_UP, KEY_RIGHT, KEY_DOWN, KEY_LEFT, KEY_ESCAPE, KEY_MAX};
 
-// directional
-#define K_UP     1
-#define K_DOWN   2
-#define K_RIGHT  3
-#define K_LEFT   4
-
-// action
-#define K_SPACE  5
-#define K_ESCAPE 0
-
 
 void read_controls(bool key[], ALLEGRO_EVENT ev);
+
+
+#endif EVENTS_H
