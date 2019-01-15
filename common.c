@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_native_dialog.h>
 
@@ -17,6 +18,8 @@ void init_allegro()
 		error("Could not initialize Allegro");
 	if(!al_init_primitives_addon())
 		error("Could not initialize Allegro - primitives addon");
+	if(!al_init_image_addon())
+		error("Could not initialize Allegro - image addon");
 	if(!al_install_keyboard())
 		error("Keyboard not found");
 	
