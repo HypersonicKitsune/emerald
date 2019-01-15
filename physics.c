@@ -23,6 +23,7 @@
 
 
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "./geoitems.h"
 #include "./physics.h"
@@ -48,4 +49,16 @@ void set_hb_point_centered(Hitbox *hb, Point pt)
 {
 	hb->x = pt.x + hb->w/2;
 	hb->y = pt.y - hb->h/2;
+}
+
+
+bool collision(Hitbox a, Hitbox b)
+{
+	if(a.x < b.x + b.w &&
+	   a.x + a.w > b.x &&
+	   a.y < b.y + b.h &&
+	   a.h + a.y > b.y)
+		return true;
+	else
+		return false;
 }

@@ -45,6 +45,7 @@ struct Hitbox
 void set_hb(Hitbox *hb, int x, int y, int w, int h);
 void set_hb_point(Hitbox *hb, Point pt);
 void set_hb_point_centered(Hitbox *hb, Point pt);
+bool collision(Hitbox a, Hitbox b);
 
 
 #endif // PHYSICS_H
