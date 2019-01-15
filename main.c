@@ -97,7 +97,7 @@ int main()
             
             set_hb_point(&pl_hb, pl);
             
-            if(collision(pl_hb, obstacle)
+            if(collision(pl_hb, obstacle))
 				mainloop = false;
             
             redraw = false;
