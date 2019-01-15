@@ -1,7 +1,7 @@
 #####################
 #
 # Makefile - compilation script
-# Copyright (C) 2018 HypersonicKitsune <hypersonic.kitsune@gmail.com>
+# Copyright (C) 2019 HypersonicKitsune <hypersonic.kitsune@gmail.com>
 # This file is a part of EmeraldEngine.
 # This file contains commands to compile the software using `make`.
 #
@@ -27,7 +27,7 @@
 # LDFLAGS: dynamic libs to link - EXEC: executable's name 
 CC = gcc
 CFLAGS = -W -Wall
-LDFLAGS = -lm -lallegro -lallegro_primitives -lallegro_dialog
+LDFLAGS = -lm -lallegro -lallegro_primitives -lallegro_dialog -lallegro_image
 EXEC = test
 SRC= $(wildcard *.c)
 OBJ= $(SRC:.c=.o)
@@ -38,7 +38,7 @@ all: $(EXEC)
 test: $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-main.o: macros.h common.h geoitems.h events.h
+main.o: macros.h common.h geoitems.h events.h image.h physics.h
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
