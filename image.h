@@ -27,4 +27,4 @@
  
  
  
- #endif IMAGE_H
+ #endif // IMAGE_H

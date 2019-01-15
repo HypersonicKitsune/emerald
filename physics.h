@@ -47,4 +47,4 @@ void set_hb_point(Hitbox *hb, Point pt);
 void set_hb_point_centered(Hitbox *hb, Point pt);
 
 
-#endif PHYSICS_H
+#endif // PHYSICS_H

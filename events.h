@@ -34,4 +34,4 @@ enum{KEY_UP, KEY_RIGHT, KEY_DOWN, KEY_LEFT, KEY_ESCAPE, KEY_MAX};
 void read_controls(bool key[], ALLEGRO_EVENT ev);
 
 
-#endif EVENTS_H
+#endif // EVENTS_H
