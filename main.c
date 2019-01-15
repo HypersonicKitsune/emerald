@@ -13,6 +13,8 @@
 #include "./macros.h"
 #include "./geoitems.h"
 #include "./events.h"
+#include "./image.h"
+#include "./physics.h"
 
 // allegro's stuff
 ALLEGRO_DISPLAY     *display  = NULL;
@@ -21,6 +23,10 @@ ALLEGRO_TIMER       *timer    = NULL;
 
 Point pl; // player's position
 Vector vec; // current player's translation vector
+Hitbox pl_hb;
+Hitbox obstacle;
+
+// control variables
 bool mainloop = true;
 bool redraw   = true;
 
@@ -41,8 +47,11 @@ int main()
     
     al_start_timer(timer);
     
+    // setup game items
 	pl = set_point_coordinates(SCREEN_W/2, SCREEN_H/2);
 	vec = set_vec_coordinates(0, 0);
+	set_hb(&pl_hb, pl.x, pl.y, 32, 32);
+	set_hb(&obstacle, 120, 120, 64, 64);
 
 	
 	while(mainloop)
@@ -83,7 +92,13 @@ int main()
         {
 			al_clear_to_color(GRAY);
 			al_draw_filled_rectangle(pl.x, pl.y, pl.x+32, pl.y+32, BLUE);
+			al_draw_filled_rectangle(obstacle.x, obstacle.y, obstacle.x+64, obstacle.y+64, RED);
 			al_flip_display();
+            
+            set_hb_point(&pl_hb, pl);
+            
+            if(collision(pl_hb, obstacle)
+				mainloop = false;
             
             redraw = false;
         }
