@@ -26,6 +26,10 @@
 #define PHYSICS_H
 
 
+/*** HITBOX STRUCTURE ***/
+
+
+/* Represents a box used for collision calculations */
 typedef struct Hitbox Hitbox;
 struct Hitbox
 {
@@ -34,6 +38,13 @@ struct Hitbox
 	int w;
 	int h;
 };
+
+
+/*** FUNCTIONS PROTOTYPES ***/
+
+void set_hb(Hitbox *hb, int x, int y, int w, int h);
+void set_hb_point(Hitbox *hb, Point pt);
+void set_hb_point_centered(Hitbox *hb, Point pt);
 
 
 #endif PHYSICS_H
