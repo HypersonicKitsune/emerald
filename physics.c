@@ -29,6 +29,15 @@
 #include "./physics.h"
 
 
+
+/*** HITBOX UTILITIES ***/
+
+
+/*
+ * void set_hb(Hitbox *hb, int x, int y, int w, int h)
+ * 
+ * Defines hitbox's position and size.
+ */
 void set_hb(Hitbox *hb, int x, int y, int w, int h)
 {
 	hb->x = x;
@@ -38,6 +47,11 @@ void set_hb(Hitbox *hb, int x, int y, int w, int h)
 }
 
 
+/*
+ * void set_hb_point(Hitbox *hb, Vector pos)
+ * 
+ * Sets hitbox's position at pos.
+ */
 void set_hb_point(Hitbox *hb, Vector pos)
 {
 	hb->x = pos.x;
@@ -45,6 +59,11 @@ void set_hb_point(Hitbox *hb, Vector pos)
 }
 
 
+/*
+ * void set_hb_point_centered(Hitbox *hb, Vector pos)
+ * 
+ * Centers hitbox at pos.
+ */
 void set_hb_point_centered(Hitbox *hb, Vector pos)
 {
 	hb->x = pos.x + hb->w/2;
@@ -52,6 +71,15 @@ void set_hb_point_centered(Hitbox *hb, Vector pos)
 }
 
 
+
+/*** COLLISION FUNCTIONS ***/
+
+
+/*
+ * bool collision(Hitbox a, Hitbox b)
+ * 
+ * Returns true if a is colliding with b.
+ */
 bool collision(Hitbox a, Hitbox b)
 {
 	if(a.x < b.x + b.w &&
