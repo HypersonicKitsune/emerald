@@ -48,8 +48,8 @@ int main()
     al_start_timer(timer);
     
     // setup game items
-	pl = set_vec_coordinates(SCREEN_W/2, SCREEN_H/2);
-	vec = set_vec_coordinates(0, 0);
+	pl = vec_new(SCREEN_W/2, SCREEN_H/2);
+	vec = vec_new(0, 0);
 	set_hb(&pl_hb, pl.x, pl.y, 32, 32);
 	set_hb(&obstacle, 120, 120, 64, 64);
 
@@ -76,14 +76,13 @@ int main()
             else if(key[KEY_RIGHT])
 				vec = set_vec_pol_coordinates(10, PI*2);
 			else
-				vec = set_vec_coordinates(0, 0);
+				vec = vec_new(0, 0);
 			
 			// close mainloop when 'escape' is pressed
 			if(key[KEY_ESCAPE])
 				mainloop = false;
             
-            pl.x += vec.x;
-            pl.y += vec.y;
+			pl = vec_add(vec, pl);
 
             redraw = true;
         }
