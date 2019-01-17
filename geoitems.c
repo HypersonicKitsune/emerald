@@ -27,7 +27,12 @@
 #include "./geoitems.h"
 
 
-/* Vector functions */
+
+/*** VECTOR FUNCTIONS ***/
+
+
+
+/* Vector modification operations */
 
 
 /*
@@ -37,11 +42,12 @@
  */
 Vector set_vec_coordinates(int x, int y)
 {
-	Vector vec;
-	vec.x = x;
-	vec.y = y;
-	return vec;
+	Vector u;
+	u.x = x;
+	u.y = y;
+	return u;
 }
+
 
 /*
  * Vector set_twopoints(int x1, int y1, int x2, int y2)
@@ -50,11 +56,12 @@ Vector set_vec_coordinates(int x, int y)
  */
 Vector set_twopoints(int x1, int y1, int x2, int y2)
 {
-	Vector vec;
-	vec.x = x2 - x1;
-	vec.y = y2 - y1;
-	return vec;
+	Vector u;
+	u.x = x2 - x1;
+	u.y = y2 - y1;
+	return u;
 }
+
 
 /*
  * Vector set_vec_pol_coordinates(int length, float angle)
@@ -63,11 +70,71 @@ Vector set_twopoints(int x1, int y1, int x2, int y2)
  */
 Vector set_vec_pol_coordinates(int length, float angle)
 {
-	Vector vec;
-	vec.x = length * cos(angle);
-	vec.y = length * sin(angle);
-	return vec;
+	Vector w;
+	w.x = length * cos(angle);
+	w.y = length * sin(angle);
+	return w;
 }
+
+
+/*
+ * Vector vec_add(Vector u, Vector v)
+ * 
+ * Adds two vectors
+ */
+Vector vec_add(Vector u, Vector v)
+{
+	Vector w;
+	w.x = u.x + v.x;
+	w.y = u.y + v.y;
+	return w;
+}
+
+
+/*
+ * Vector vec_substract(Vector u, Vector v)
+ * 
+ * Subtracts two vectors
+ */
+Vector vec_substract(Vector u, Vector v)
+{
+	Vector w;
+	w.x = u.x - v.x;
+	w.y = u.y - v.y;
+	return w;
+}
+
+
+/*
+ * Vector vec_multiply(Vector u, int k)
+ * 
+ * Returns a copy of vector u multiplied by k.
+ */
+Vector vec_multiply(Vector u, int k)
+{
+	Vector w;
+	w.x = u.x * k;
+	w.y = u.y * k;
+	return w;
+}
+
+
+/*
+ * Vector vec_rotate(Vector u, float angle)
+ * 
+ * Rotates a vector. Angle in radians.
+ */
+Vector vec_rotate(Vector u, float angle)
+{
+	Vector v;
+	v.x = u.x * cos(angle) - u.y * sin(angle);
+	v.y = u.x * sin(angle) + u.y * cos(angle);
+	return v;
+}
+
+
+/* Vector values */
+
 
 /*
  * float vec_length(Vector vec)
@@ -79,6 +146,7 @@ float vec_length(Vector vec)
 	return sqrt(vec.x * vec.x + vec.y * vec.y);
 }
 
+
 /*
  * float vec_angle(Vector vec)
  * 
@@ -88,6 +156,7 @@ float vec_angle(Vector vec)
 {
 	return atan2(vec.y, vec.x);
 }
+
 
 /*
  * float dot_product(Vector a, Vector b)

@@ -25,7 +25,9 @@
 #define GEOITEMS_H
 
 
+
 /*** VECTOR STRUCTURE ***/
+
 
 typedef struct Vector Vector;
 struct Vector
@@ -35,14 +37,25 @@ struct Vector
 };
 
 
+
 /*** VECTOR FUNCTIONS ***/
+
+
+/* Vector modification operations */
 
 Vector set_vec_coordinates(int x, int y);
 Vector set_twopoints(int x1, int y1, int x2, int y2);
 Vector set_vec_pol_coordinates(int length, float angle);
+Vector vec_add(Vector u, Vector v);
+Vector vec_substract(Vector u, Vector v);
 Vector vec_multiply(Vector u, int k);
+Vector vec_rotate(Vector u, float angle);
+
+/* Vector values */
+
 float vec_length(Vector vec);
 float vec_angle(Vector vec);
 float dot_product(Vector a, Vector b);
+
 
 #endif // GEOITEMS_H
