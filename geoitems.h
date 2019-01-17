@@ -38,7 +38,7 @@ struct Vector
 /* Vector functions */
 
 Vector set_vec_coordinates(int x, int y);
-Vector set_twopoints(Point a, Point b);
+Vector set_twopoints(int x1, int y1, int x2, int y2)
 Vector set_vec_pol_coordinates(int length, float angle);
 float vec_length(Vector vec);
 float vec_angle(Vector vec);

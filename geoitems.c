@@ -44,15 +44,15 @@ Vector set_vec_coordinates(int x, int y)
 }
 
 /*
- * Vector set_twopoints(Point a, Point b)
+ * Vector set_twopoints(int x1, int y1, int x2, int y2)
  * 
  * Set Vector's coordinates as the a, b vector
  */
-Vector set_twopoints(Point a, Point b)
+Vector set_twopoints(int x1, int y1, int x2, int y2)
 {
 	Vector vec;
-	vec.x = b.x - a.x;
-	vec.y = b.y - a.y;
+	vec.x = x2 - x1;
+	vec.y = y2 - y1;
 	return vec;
 }
 
