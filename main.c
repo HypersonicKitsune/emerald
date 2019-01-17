@@ -21,7 +21,7 @@ ALLEGRO_DISPLAY     *display  = NULL;
 ALLEGRO_EVENT_QUEUE *ev_queue = NULL;
 ALLEGRO_TIMER       *timer    = NULL;
 
-Point pl; // player's position
+Vector pl; // player's position
 Vector vec; // current player's translation vector
 Hitbox pl_hb;
 Hitbox obstacle;
@@ -48,7 +48,7 @@ int main()
     al_start_timer(timer);
     
     // setup game items
-	pl = set_point_coordinates(SCREEN_W/2, SCREEN_H/2);
+	pl = set_vec_coordinates(SCREEN_W/2, SCREEN_H/2);
 	vec = set_vec_coordinates(0, 0);
 	set_hb(&pl_hb, pl.x, pl.y, 32, 32);
 	set_hb(&obstacle, 120, 120, 64, 64);
@@ -82,7 +82,8 @@ int main()
 			if(key[KEY_ESCAPE])
 				mainloop = false;
             
-            point_translation(&pl, vec);
+            pl.x += vec.x;
+            pl.y += vec.y;
 
             redraw = true;
         }
