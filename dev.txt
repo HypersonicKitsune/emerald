@@ -1,0 +1,23 @@
+Fichier dédié au développement du jeu, liste des trucs à faire et tout.
+It's only in French as I'm working alone on this project. If you're
+interested in this project, please contact me.
+
+Modules
+-------
+
+ * common : fonctions utilitaires communes
+ * events : gestion des évènements
+ * resman : gestion des ressources du jeu
+ * image : imagerie
+ * geoitems : points & vecteurs + fonctions associées
+ * physics : gestion des collisions + physique des objets
+ * macros : macros utilitaires
+ 
+A faire (par module)
+--------------------
+
+ * resman : corriger tous les 'TODOs' dans le .c
+ * image : toutes les fonctions d'image blabla t'as compris
+ * geoitems : supprimer les points, qui peuvent être remplacés par des
+              vecteurs ce qui simplifirait de nombreuses routines.
+ * physics : implémenter de vraies collisions.
