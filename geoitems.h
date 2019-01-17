@@ -42,6 +42,6 @@ Vector set_twopoints(Point a, Point b);
 Vector set_vec_pol_coordinates(int length, float angle);
 float vec_length(Vector vec);
 float vec_angle(Vector vec);
-int dot_product_sign(Vector a, Vector b);
+float dot_product(Vector a, Vector b);
 
 #endif // GEOITEMS_H

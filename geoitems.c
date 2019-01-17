@@ -90,14 +90,11 @@ float vec_angle(Vector vec)
 }
 
 /*
- * int dot_product_sign(Vector a, Vector b)
+ * float dot_product(Vector a, Vector b)
  * 
- * Returns only the sign of the dot product of a scalar b.
+ * Returns the dot product a.b
  */
-int dot_product_sign(Vector a, Vector b)
+float dot_product(Vector a, Vector b)
 {
-	if((a.y * b.x - a.x * b.y) > 0)
-		return 1;
-	else
-		return -1;
+	return (a.x + a.y)*(b.x + b.y);
 }
