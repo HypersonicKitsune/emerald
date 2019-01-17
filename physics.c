@@ -38,17 +38,17 @@ void set_hb(Hitbox *hb, int x, int y, int w, int h)
 }
 
 
-void set_hb_point(Hitbox *hb, Point pt)
+void set_hb_point(Hitbox *hb, Vector pos)
 {
-	hb->x = pt.x;
-	hb->y = pt.y;
+	hb->x = pos.x;
+	hb->y = pos.y;
 }
 
 
-void set_hb_point_centered(Hitbox *hb, Point pt)
+void set_hb_point_centered(Hitbox *hb, Vector pos)
 {
-	hb->x = pt.x + hb->w/2;
-	hb->y = pt.y - hb->h/2;
+	hb->x = pos.x + hb->w/2;
+	hb->y = pos.y - hb->h/2;
 }
 
 
