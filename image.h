@@ -25,6 +25,6 @@
  #ifndef IMAGE_H
  #define IMAGE_H
  
- 
+ void image_load(ALLEGRO_BITMAP *ht[], const char *path);
  
  #endif // IMAGE_H
