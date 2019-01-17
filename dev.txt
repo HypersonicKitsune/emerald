@@ -21,3 +21,9 @@ A faire (par module)
  * geoitems : supprimer les points, qui peuvent être remplacés par des
               vecteurs ce qui simplifirait de nombreuses routines.
  * physics : implémenter de vraies collisions.
+
+A faire (global)
+----------------
+
+ * Ptet faire que ce soit moins fouillis (dossiers 'src' et 'include' ou
+ un truc du genre)
