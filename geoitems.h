@@ -1,6 +1,6 @@
 /*********************
  *
- * geoitems - Geometrical Items, such as points or vectors.
+ * geoitems - Geometrical Items - 2D vectors.
  * Copyright (C) 2018 HypersonicKitsune <hypersonic.kitsune@gmail.com>
  * This file is a part of EmeraldEngine.
  *
@@ -43,7 +43,7 @@ struct Vector
 
 /* Vector modification operations */
 
-Vector set_vec_coordinates(int x, int y);
+Vector vec_new(int x, int y);
 Vector set_twopoints(int x1, int y1, int x2, int y2);
 Vector set_vec_pol_coordinates(int length, float angle);
 Vector vec_add(Vector u, Vector v);

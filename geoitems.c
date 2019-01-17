@@ -1,6 +1,6 @@
 /*********************
  *
- * geoitems - Geometrical Items, such as points or vectors.
+ * geoitems - Geometrical Items - 2D vectors.
  * Copyright (C) 2018 HypersonicKitsune <hypersonic.kitsune@gmail.com>
  * This file is a part of EmeraldEngine.
  *
@@ -36,15 +36,13 @@
 
 
 /*
- * Vector set_vec_coordinates(int x, int y)
+ * Vector vec_new(int x, int y)
  *
- * Sets cartesian coordinates of a Vector
+ * Creates a new 2D vector.
  */
-Vector set_vec_coordinates(int x, int y)
+Vector vec_new(int x, int y)
 {
-	Vector u;
-	u.x = x;
-	u.y = y;
+	Vector u = {x, y};
 	return u;
 }
 
