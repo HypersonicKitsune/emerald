@@ -101,31 +101,3 @@ int dot_product_sign(Vector a, Vector b)
 	else
 		return -1;
 }
-
-
-/* Point functions */
-
-
-/*
- * Point set_point_coordinates(int x, int y)
- *
- * Sets cartesian coordinates of a Point
- */
-Point set_point_coordinates(int x, int y)
-{
-	Point pt;
-	pt.x = x;
-	pt.y = y;
-	return pt;
-}
-
-/*
- * void point_translation(Point* pt, Vector v)
- * 
- * Performs a translation of a point by a vector
- */
-void point_translation(Point* pt, Vector v)
-{
-	pt->x += v.x;
-	pt->y += v.y;
-}

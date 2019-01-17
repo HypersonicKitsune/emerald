@@ -25,17 +25,10 @@
 #define GEOITEMS_H
 
 
-/* Structure definitions */
+/* Vector structure */
 
 typedef struct Vector Vector;
 struct Vector
-{
-	int x;
-	int y;
-};
-
-typedef struct Point Point;
-struct Point
 {
 	int x;
 	int y;
@@ -50,11 +43,5 @@ Vector set_vec_pol_coordinates(int length, float angle);
 float vec_length(Vector vec);
 float vec_angle(Vector vec);
 int dot_product_sign(Vector a, Vector b);
-
-
-/* Point functions */
-
-Point set_point_coordinates(int x, int y);
-void point_translation(Point* pt, Vector v);
 
 #endif // GEOITEMS_H
