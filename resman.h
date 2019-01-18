@@ -31,7 +31,7 @@ int hashfunc(const char *str);
 
 /*** ALLEGRO_BITMAP HASHTABLE ***/
 
-ALLEGRO_BITMAP *bitmap_hashtable_create();
+// ALLEGRO_BITMAP *bitmap_hashtable_create();
 void bitmap_hashtable_empty(ALLEGRO_BITMAP *ht[]);
 void bitmap_hashtable_add(ALLEGRO_BITMAP *ht[], ALLEGRO_BITMAP *bmp, const char *key);
 ALLEGRO_BITMAP *bitmap_hashtable_get(ALLEGRO_BITMAP *ht[], const char *key);

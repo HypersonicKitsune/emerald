@@ -25,6 +25,7 @@
 
 #include <allegro5/allegro.h>
 
+#include "./common.h"
 #include "./resman.h"
 
 
@@ -72,16 +73,17 @@ int hashfunc(const char *str)
  * Returns an empty ALLEGRO_BITMAP array of pointers
  * which will be used as a hashtable.
  */
-ALLEGRO_BITMAP *bitmap_hashtable_create()
+/*ALLEGRO_BITMAP *bitmap_hashtable_create()
 {
 	// /!\ DO NOT USE THIS FUNCTION; it doesn't work
-	ALLEGRO_BITMAP *ht[HASHTABLE_TABLESIZE];
+	ALLEGRO_BITMAP *ht = NULL;
+	ht = malloc(sizeof(*ht));
 
 	for(int i = 0; i < HASHTABLE_TABLESIZE; i++)
 		ht[i] = NULL;
 	
 	return ht;
-}
+}*/
 
 
 /*
@@ -109,8 +111,10 @@ void bitmap_hashtable_empty(ALLEGRO_BITMAP *ht[])
  */
 void bitmap_hashtable_add(ALLEGRO_BITMAP *ht[], ALLEGRO_BITMAP *bmp, const char *key)
 {
-	// TODO : check for any collision
-	ht[hashfunc(key)] = bmp;
+	if(ht[hashfunc(key)] == NULL)
+		ht[hashfunc(key)] = bmp;
+	else
+		warning("Collision! Wrong key in hashtable", key);
 }
 
 
@@ -121,8 +125,14 @@ void bitmap_hashtable_add(ALLEGRO_BITMAP *ht[], ALLEGRO_BITMAP *bmp, const char 
  */
 ALLEGRO_BITMAP *bitmap_hashtable_get(ALLEGRO_BITMAP *ht[], const char *key)
 {
-	// TODO : check if this isn't NULL
-	return ht[hashfunc(key)];
+	ALLEGRO_BITMAP *bmp = ht[hashfunc(key)];
+	if(bmp != NULL)
+		return bmp;
+	else
+	{
+		warning("Invalid key - no element exist", key);
+		return NULL;
+	}
 }
 
 
