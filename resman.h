@@ -24,19 +24,37 @@
 #define RESMAN_H
 
 
+
+/*** SETUP ***/
+
+#define HASHTABLE_TABLESIZE 97
+
+
+
+/*** HASHTABLES STRUCTURES ***/
+
+typedef struct HASHTABLE_BMP HASHTABLE_BMP;
+struct HASHTABLE_BMP
+{
+	ALLEGRO_BITMAP *h[HASHTABLE_TABLESIZE];
+};
+
+
+
 /*** HASHTABLE-RELATED FUNCTIONS ***/
 
 int hashfunc(const char *str);
 
 
+
 /*** ALLEGRO_BITMAP HASHTABLE ***/
 
-// ALLEGRO_BITMAP *bitmap_hashtable_create();
-void bitmap_hashtable_empty(ALLEGRO_BITMAP *ht[]);
-void bitmap_hashtable_add(ALLEGRO_BITMAP *ht[], ALLEGRO_BITMAP *bmp, const char *key);
-ALLEGRO_BITMAP *bitmap_hashtable_get(ALLEGRO_BITMAP *ht[], const char *key);
-void bitmap_hashtable_remove(ALLEGRO_BITMAP *ht[], const char *key);
-int bitmap_hashtable_count(ALLEGRO_BITMAP *ht[]);
+HASHTABLE_BMP bitmap_hashtable_create();
+void bitmap_hashtable_empty(HASHTABLE_BMP ht[]);
+void bitmap_hashtable_add(HASHTABLE_BMP ht[], ALLEGRO_BITMAP *bmp, const char *key);
+ALLEGRO_BITMAP *bitmap_hashtable_get(HASHTABLE_BMP ht[], const char *key);
+void bitmap_hashtable_remove(HASHTABLE_BMP ht[], const char *key);
+int bitmap_hashtable_count(HASHTABLE_BMP ht[]);
 
 
 #endif // RESMAN_H

@@ -30,12 +30,6 @@
 
 
 
-/*** SETUP ***/
-
-#define HASHTABLE_TABLESIZE 97
-
-
-
 /*** HASHTABLE-RELATED FUNCTIONS ***/
 
 // TODO : creer une macro capable de generer des hashtables par type.
@@ -68,51 +62,50 @@ int hashfunc(const char *str)
 
 
 /*
- * ALLEGRO_BITMAP *bitmap_hashtable_create()
+ * HASHTABLE_BMP bitmap_hashtable_create()
  * 
  * Returns an empty ALLEGRO_BITMAP array of pointers
  * which will be used as a hashtable.
  */
-/*ALLEGRO_BITMAP *bitmap_hashtable_create()
+HASHTABLE_BMP bitmap_hashtable_create()
 {
 	// /!\ DO NOT USE THIS FUNCTION; it doesn't work
-	ALLEGRO_BITMAP *ht = NULL;
-	ht = malloc(sizeof(*ht));
+	HASHTABLE_BMP ht = {NULL};
 
 	for(int i = 0; i < HASHTABLE_TABLESIZE; i++)
-		ht[i] = NULL;
+		ht.h[i] = NULL;
 	
 	return ht;
-}*/
+}
 
 
 /*
- * void bitmap_hashtable_empty(ALLEGRO_BITMAP *ht[])
+ * void bitmap_hashtable_empty(HASHTABLE_BMP ht[])
  * 
  * Empties the ALLEGRO_BITMAP hashtable 'ht'.
  */
-void bitmap_hashtable_empty(ALLEGRO_BITMAP *ht[])
+void bitmap_hashtable_empty(HASHTABLE_BMP ht[])
 {
 	for(int i = 0; i < HASHTABLE_TABLESIZE; i++)
 	{
-		if(ht[i] != NULL)
+		if(ht->h[i] != NULL)
 		{
-			al_destroy_bitmap(ht[i]);
-			ht[i] = NULL;
+			al_destroy_bitmap(ht->h[i]);
+			ht->h[i] = NULL;
 		}
 	}
 }
 
 
 /*
- * void bitmap_hashtable_add(ALLEGRO_BITMAP *ht[], ALLEGRO_BITMAP *bmp, const char *key)
+ * void bitmap_hashtable_add(HASHTABLE_BMP ht[], ALLEGRO_BITMAP *bmp, const char *key)
  * 
  * Adds 'bmp' to ALLEGRO_BITMAP hashtable 'ht'.
  */
-void bitmap_hashtable_add(ALLEGRO_BITMAP *ht[], ALLEGRO_BITMAP *bmp, const char *key)
+void bitmap_hashtable_add(HASHTABLE_BMP ht[], ALLEGRO_BITMAP *bmp, const char *key)
 {
-	if(ht[hashfunc(key)] == NULL)
-		ht[hashfunc(key)] = bmp;
+	if(ht->h[hashfunc(key)] == NULL)
+		ht->h[hashfunc(key)] = bmp;
 	else
 		warning("Collision! Wrong key in hashtable", key);
 }
@@ -125,7 +118,7 @@ void bitmap_hashtable_add(ALLEGRO_BITMAP *ht[], ALLEGRO_BITMAP *bmp, const char 
  */
 ALLEGRO_BITMAP *bitmap_hashtable_get(ALLEGRO_BITMAP *ht[], const char *key)
 {
-	ALLEGRO_BITMAP *bmp = ht[hashfunc(key)];
+	ALLEGRO_BITMAP *bmp = ht->h[hashfunc(key)];
 	if(bmp != NULL)
 		return bmp;
 	else
@@ -137,16 +130,16 @@ ALLEGRO_BITMAP *bitmap_hashtable_get(ALLEGRO_BITMAP *ht[], const char *key)
 
 
 /*
- * void bitmap_hashtable_remove(ALLEGRO_BITMAP *ht[], const char *key)
+ * void bitmap_hashtable_remove(HASHTABLE_BMP ht[], const char *key)
  * 
  * Removes the element corresponding to its key in ALLEGRO_BITMAP hashtable 'ht'.
  */
-void bitmap_hashtable_remove(ALLEGRO_BITMAP *ht[], const char *key)
+void bitmap_hashtable_remove(HASHTABLE_BMP ht[], const char *key)
 {
 	int index = hashfunc(key);
 	
-	al_destroy_bitmap(ht[index]);
-	ht[index] = NULL;
+	al_destroy_bitmap(ht->h[index]);
+	ht->h[index] = NULL;
 }
 
 
@@ -160,7 +153,7 @@ int bitmap_hashtable_count(ALLEGRO_BITMAP *ht[])
 	
 	for(int i = 0; i < HASHTABLE_TABLESIZE; i++)
 	{
-		if(ht[i] != NULL)
+		if(ht->h[i] != NULL)
 			mem_used++;
 	}
 	
