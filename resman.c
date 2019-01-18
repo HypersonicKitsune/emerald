@@ -84,7 +84,7 @@ HASHTABLE_BMP bitmap_hashtable_create()
  * 
  * Empties the ALLEGRO_BITMAP hashtable 'ht'.
  */
-void bitmap_hashtable_empty(HASHTABLE_BMP ht[])
+void bitmap_hashtable_empty(HASHTABLE_BMP *ht)
 {
 	for(int i = 0; i < HASHTABLE_TABLESIZE; i++)
 	{
@@ -102,7 +102,7 @@ void bitmap_hashtable_empty(HASHTABLE_BMP ht[])
  * 
  * Adds 'bmp' to ALLEGRO_BITMAP hashtable 'ht'.
  */
-void bitmap_hashtable_add(HASHTABLE_BMP ht[], ALLEGRO_BITMAP *bmp, const char *key)
+void bitmap_hashtable_add(HASHTABLE_BMP *ht, ALLEGRO_BITMAP *bmp, const char *key)
 {
 	if(ht->h[hashfunc(key)] == NULL)
 		ht->h[hashfunc(key)] = bmp;
@@ -116,7 +116,7 @@ void bitmap_hashtable_add(HASHTABLE_BMP ht[], ALLEGRO_BITMAP *bmp, const char *k
  * 
  * Returns the element corresponding to its key in ALLEGRO_BITMAP hashtable 'ht'.
  */
-ALLEGRO_BITMAP *bitmap_hashtable_get(ALLEGRO_BITMAP *ht[], const char *key)
+ALLEGRO_BITMAP *bitmap_hashtable_get(HASHTABLE_BMP *ht, const char *key)
 {
 	ALLEGRO_BITMAP *bmp = ht->h[hashfunc(key)];
 	if(bmp != NULL)
@@ -134,7 +134,7 @@ ALLEGRO_BITMAP *bitmap_hashtable_get(ALLEGRO_BITMAP *ht[], const char *key)
  * 
  * Removes the element corresponding to its key in ALLEGRO_BITMAP hashtable 'ht'.
  */
-void bitmap_hashtable_remove(HASHTABLE_BMP ht[], const char *key)
+void bitmap_hashtable_remove(HASHTABLE_BMP *ht, const char *key)
 {
 	int index = hashfunc(key);
 	
@@ -147,7 +147,7 @@ void bitmap_hashtable_remove(HASHTABLE_BMP ht[], const char *key)
  * 
  * Returns the number of used slots in ALLEGRO_BITMAP hashtable 'ht'.
  */
-int bitmap_hashtable_count(ALLEGRO_BITMAP *ht[])
+int bitmap_hashtable_count(HASHTABLE_BMP *ht)
 {
 	int mem_used = 0;
 	

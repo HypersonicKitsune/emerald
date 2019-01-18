@@ -50,11 +50,11 @@ int hashfunc(const char *str);
 /*** ALLEGRO_BITMAP HASHTABLE ***/
 
 HASHTABLE_BMP bitmap_hashtable_create();
-void bitmap_hashtable_empty(HASHTABLE_BMP ht[]);
-void bitmap_hashtable_add(HASHTABLE_BMP ht[], ALLEGRO_BITMAP *bmp, const char *key);
-ALLEGRO_BITMAP *bitmap_hashtable_get(HASHTABLE_BMP ht[], const char *key);
-void bitmap_hashtable_remove(HASHTABLE_BMP ht[], const char *key);
-int bitmap_hashtable_count(HASHTABLE_BMP ht[]);
+void bitmap_hashtable_empty(HASHTABLE_BMP *ht);
+void bitmap_hashtable_add(HASHTABLE_BMP *ht, ALLEGRO_BITMAP *bmp, const char *key);
+ALLEGRO_BITMAP *bitmap_hashtable_get(HASHTABLE_BMP *ht, const char *key);
+void bitmap_hashtable_remove(HASHTABLE_BMP *ht, const char *key);
+int bitmap_hashtable_count(HASHTABLE_BMP *ht);
 
 
 #endif // RESMAN_H
