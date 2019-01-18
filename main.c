@@ -11,6 +11,7 @@
 
 #include "./common.h"
 #include "./macros.h"
+#include "./resman.h"
 #include "./geoitems.h"
 #include "./events.h"
 #include "./image.h"
@@ -20,6 +21,9 @@
 ALLEGRO_DISPLAY     *display  = NULL;
 ALLEGRO_EVENT_QUEUE *ev_queue = NULL;
 ALLEGRO_TIMER       *timer    = NULL;
+
+// testing resource manager
+HASHTABLE_BMP ht;
 
 Vector pl; // player's position
 Vector vec; // current player's translation vector
@@ -52,6 +56,11 @@ int main()
 	vec = vec_new(0, 0);
 	set_hb(&pl_hb, pl.x, pl.y, 32, 32);
 	set_hb(&obstacle, 120, 120, 64, 64);
+	
+	// testing resource manager
+	ht = bitmap_hashtable_create();
+	image_load(&ht, "./chr_test.png");
+	bitmap_hashtable_empty(&ht);
 
 	
 	while(mainloop)
