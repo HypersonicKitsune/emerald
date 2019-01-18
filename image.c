@@ -31,11 +31,11 @@
 
 
 /*
- * void image_load(ALLEGRO_BITMAP *ht[], const char *path)
+ * void image_load(HASHTABLE_BMP ht[], const char *path)
  * 
  * Loads an image file and puts it into ALLEGRO_BITMAP hashtable 'ht'.
  */
-void image_load(ALLEGRO_BITMAP *ht[], const char *path)
+void image_load(HASHTABLE_BMP ht[], const char *path)
 {
 	bitmap_hashtable_add(ht, al_load_bitmap(path), path);
 }
