@@ -38,7 +38,7 @@ all: $(EXEC)
 test: $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-main.o: macros.h common.h geoitems.h events.h image.h physics.h
+main.o: macros.h common.h resman.h geoitems.h events.h image.h physics.h
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
