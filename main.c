@@ -60,7 +60,7 @@ int main()
 	// testing resource manager
 	ht = bitmap_hashtable_create();
 	image_load(&ht, "./chr_test.png");
-	bitmap_hashtable_empty(&ht);
+	image_mask(&ht, "./chr_test.png", MAGENTA);
 
 	
 	while(mainloop)
@@ -102,6 +102,9 @@ int main()
 			al_clear_to_color(GRAY);
 			al_draw_filled_rectangle(pl.x, pl.y, pl.x+32, pl.y+32, BLUE);
 			al_draw_filled_rectangle(obstacle.x, obstacle.y, obstacle.x+64, obstacle.y+64, RED);
+			
+			al_draw_bitmap(bitmap_hashtable_get(&ht, "./chr_test.png"), 10, 10, 0);
+			
 			al_flip_display();
             
             set_hb_point(&pl_hb, pl);
@@ -112,6 +115,8 @@ int main()
             redraw = false;
         }
 	}
+	
+	bitmap_hashtable_empty(&ht);
 	
 	al_destroy_timer(timer);
 	al_destroy_event_queue(ev_queue);
