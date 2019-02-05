@@ -69,7 +69,6 @@ int hashfunc(const char *str)
  */
 HASHTABLE_BMP bitmap_hashtable_create()
 {
-	// /!\ DO NOT USE THIS FUNCTION; it doesn't work
 	HASHTABLE_BMP ht = {NULL};
 
 	for(int i = 0; i < HASHTABLE_TABLESIZE; i++)
