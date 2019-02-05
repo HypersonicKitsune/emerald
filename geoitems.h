@@ -50,6 +50,7 @@ Vector vec_add(Vector u, Vector v);
 Vector vec_substract(Vector u, Vector v);
 Vector vec_multiply(Vector u, int k);
 Vector vec_rotate(Vector u, float angle);
+Vector vec_normalize(Vector u);
 
 /* Vector values */
 

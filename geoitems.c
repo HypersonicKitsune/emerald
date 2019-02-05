@@ -131,6 +131,19 @@ Vector vec_rotate(Vector u, float angle)
 }
 
 
+/*
+ * Vector vec_normalize(Vector u)
+ * 
+ * Returns a normalized vector of u
+ */
+Vector vec_normalize(Vector u)
+{
+	Vector v = {u.x/vec_length(u), u.y/vec_length(u)};
+	return v;
+}
+
+
+
 /* Vector values */
 
 
