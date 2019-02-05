@@ -26,6 +26,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 
+#include "./geoitems.h"
 #include "./resman.h"
 #include "./image.h"
 
@@ -57,3 +58,7 @@ void image_mask(HASHTABLE_BMP ht[], const char *key, ALLEGRO_COLOR col)
  * 
  * Draws an image on the screen
  */
+void image_draw(HASHTABLE_BMP ht[], const char *key, Vector coords, int flags)
+{
+	al_draw_bitmap(bitmap_hashtable_get(ht, key), coords.x, coords.y, flags);
+}

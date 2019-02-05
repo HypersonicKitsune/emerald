@@ -27,5 +27,6 @@
  
 void image_load(HASHTABLE_BMP ht[], const char *path);
 void image_mask(HASHTABLE_BMP ht[], const char *key, ALLEGRO_COLOR col);
+void image_draw(HASHTABLE_BMP ht[], const char *key, Vector coords, int flags);
  
  #endif // IMAGE_H
