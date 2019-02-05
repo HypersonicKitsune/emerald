@@ -27,6 +27,7 @@ HASHTABLE_BMP ht;
 
 Vector pl; // player's position
 Vector vec; // current player's translation vector
+Vector bmp_xy;
 Hitbox pl_hb;
 Hitbox obstacle;
 
@@ -54,6 +55,7 @@ int main()
     // setup game items
 	pl = vec_new(SCREEN_W/2, SCREEN_H/2);
 	vec = vec_new(0, 0);
+	bmp_xy = vec_new(10, 10);
 	set_hb(&pl_hb, pl.x, pl.y, 32, 32);
 	set_hb(&obstacle, 120, 120, 64, 64);
 	
@@ -103,7 +105,7 @@ int main()
 			al_draw_filled_rectangle(pl.x, pl.y, pl.x+32, pl.y+32, BLUE);
 			al_draw_filled_rectangle(obstacle.x, obstacle.y, obstacle.x+64, obstacle.y+64, RED);
 			
-			al_draw_bitmap(bitmap_hashtable_get(&ht, "./chr_test.png"), 10, 10, 0);
+			image_draw(&ht, "./chr_test.png", bmp_xy, 0);
 			
 			al_flip_display();
             
