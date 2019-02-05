@@ -39,3 +39,21 @@ void image_load(HASHTABLE_BMP ht[], const char *path)
 {
 	bitmap_hashtable_add(ht, al_load_bitmap(path), path);
 }
+
+
+/*
+ * void image_mask(HASHTABLE_BMP ht[], const char *key, ALLEGRO_COLOR col)
+ * 
+ * Makes pixels with 'col' transparent.
+ */
+void image_mask(HASHTABLE_BMP ht[], const char *key, ALLEGRO_COLOR col)
+{
+	al_convert_mask_to_alpha(bitmap_hashtable_get(ht, key), col);
+}
+
+
+/*
+ * void image_draw(HASHTABLE_BMP ht[], const char *key, Vector coords)
+ * 
+ * Draws an image on the screen
+ */
