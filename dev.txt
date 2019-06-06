@@ -24,6 +24,8 @@ A faire (par module)
 A faire (global)
 ----------------
 
+ * Système de scripting d'objet dans un langage maison simpliste ?
+   Le faire en python sinon ?
  * Utiliser cmake plutôt que d'écrire des Makefile entiers ?
  * Faire un module 'engine'
  * Faire les programmes de test dans des modules à part, pas forcément
