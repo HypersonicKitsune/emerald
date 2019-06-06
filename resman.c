@@ -122,6 +122,7 @@ ALLEGRO_BITMAP *bitmap_hashtable_get(HASHTABLE_BMP *ht, const char *key)
 		return bmp;
 	else
 	{
+		// TODO : replace by a generic bitmap
 		warning("Invalid key - no element exist", key);
 		return NULL;
 	}
