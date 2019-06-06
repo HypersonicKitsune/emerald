@@ -18,8 +18,7 @@ A faire (par module)
 
  * resman : corriger tous les 'TODOs' dans le .c
  * image : toutes les fonctions d'image blabla t'as compris
- * geoitems : supprimer les points, qui peuvent être remplacés par des
-              vecteurs ce qui simplifirait de nombreuses routines.
+ * geoitems : fait, tout marche avec des vecteurs
  * physics : implémenter de vraies collisions.
 
 A faire (global)
