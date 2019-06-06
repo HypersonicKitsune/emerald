@@ -61,8 +61,8 @@ int main()
 	
 	// testing resource manager
 	ht = bitmap_hashtable_create();
-	image_load(&ht, "./chr_test.png");
-	image_mask(&ht, "./chr_test.png", MAGENTA);
+	image_load(&ht, "./test_media/chr_test.png");
+	image_mask(&ht, "./test_media/chr_test.png", MAGENTA);
 
 	
 	while(mainloop)
@@ -105,7 +105,7 @@ int main()
 			al_draw_filled_rectangle(pl.x, pl.y, pl.x+32, pl.y+32, BLUE);
 			al_draw_filled_rectangle(obstacle.x, obstacle.y, obstacle.x+64, obstacle.y+64, RED);
 			
-			image_draw(&ht, "./chr_test.png", bmp_xy, 0);
+			image_draw(&ht, "./test_media/chr_test.png", bmp_xy, 0);
 			
 			al_flip_display();
             
