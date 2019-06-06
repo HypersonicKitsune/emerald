@@ -60,9 +60,18 @@ int main()
 	set_hb(&obstacle, 120, 120, 64, 64);
 	
 	// testing resource manager
+	// ORDER is IMPORTANT !
+	// 1. Create hashtable & load bitmaps
+	// 2. Cutting sprites out
+	// 3. al_set_target_backbuffer(display);
+	// 4. Additionnal sprite processing
 	ht = bitmap_hashtable_create();
 	image_load(&ht, "./test_media/chr_test.png");
-	image_mask(&ht, "./test_media/chr_test.png", MAGENTA);
+	image_get_region(&ht, "./test_media/chr_test.png", "sonic01", 0, 0, 32, 40);
+	
+	al_set_target_backbuffer(display);
+	
+	image_mask(&ht, "sonic01", MAGENTA);
 
 	
 	while(mainloop)
@@ -105,7 +114,7 @@ int main()
 			al_draw_filled_rectangle(pl.x, pl.y, pl.x+32, pl.y+32, BLUE);
 			al_draw_filled_rectangle(obstacle.x, obstacle.y, obstacle.x+64, obstacle.y+64, RED);
 			
-			image_draw(&ht, "./test_media/chr_test.png", bmp_xy, 0);
+			image_draw(&ht, "sonic01", bmp_xy, 0);
 			
 			al_flip_display();
             
