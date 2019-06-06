@@ -62,3 +62,19 @@ void image_draw(HASHTABLE_BMP ht[], const char *key, Vector coords, int flags)
 {
 	al_draw_bitmap(bitmap_hashtable_get(ht, key), coords.x, coords.y, flags);
 }
+
+
+/*
+ * void image_get_region(HASHTABLE_BMP ht[], const char *key, const char *new, int x, int y, int w, h)
+ * 
+ * Returns a specific region from a bitmap.
+ * NOTE : Don't forget to call al_set_target_backbuffer(display) after
+ * using this function !
+ */
+void image_get_region(HASHTABLE_BMP ht[], const char *key, const char *new, int x, int y, int w, h)
+{
+	ALLEGRO_BITMAP bmp = al_create_bitmap(w, h);
+	al_set_target_bitmap(bmp);
+	al_draw_bitmap_region(bitmap_hashtable_get(ht, key),x,y,w,h,0,0,0);
+	bitmap_hashtable_add(ht, bmp, new);
+}
