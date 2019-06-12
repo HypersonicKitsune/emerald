@@ -24,6 +24,7 @@ A faire (par module)
 A faire (global)
 ----------------
 
+ * Fichiers de texte : traductions, log etc.
  * Système de scripting d'objet dans un langage maison simpliste ?
    Le faire en python sinon ?
  * Utiliser cmake plutôt que d'écrire des Makefile entiers ?
