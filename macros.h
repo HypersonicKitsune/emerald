@@ -30,6 +30,7 @@
 #define GAME_NAME "Emerald Engine"
 #define GAME_VERSION "0.0"
 
+#define LOGFILE_PATH "./log.txt" // default logfile path
 
 /*** MATHEMATICS ***/
 
