@@ -27,6 +27,12 @@
 
 /*** GENERAL PURPOSE ***/
 
+#define GAME_NAME "Emerald Engine"
+#define GAME_VERSION "0.0"
+
+
+/*** MATHEMATICS ***/
+
 #define PI 3.1415927
 
 
