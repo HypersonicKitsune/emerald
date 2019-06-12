@@ -6,12 +6,19 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_native_dialog.h>
 
+#include "./macros.h"
 #include "./common.h"
+
+
+static FILE *logfile = NULL;
+
 
 /* Engine setup */
 
 void init_allegro()
 {
+	logfile_init();
+	
 	dbg("Initialize Allegro... ");
 	
 	if(!al_init())
@@ -24,6 +31,45 @@ void init_allegro()
 		error("Keyboard not found");
 	
 	dbg("Done!\n");
+}
+
+
+void release_all()
+{
+	logfile_close();
+}
+
+
+/* Logfile */
+
+void logfile_init()
+{
+	if(NULL != (logfile = fopen(LOGFILE_PATH, "w")))
+	{
+		logfile_message("%s version %s", GAME_NAME, GAME_VERSION);
+	}
+	else
+		warning("logfile_init()", "Logfile could not be initialized");
+}
+
+
+void logfile_message(const char *msg, ...)
+{
+	if(logfile != NULL)
+	{
+		fprintf(logfile, msg);
+		fputc('\n', logfile);
+	}
+}
+
+
+void logfile_close()
+{
+	logfile_message("Closing logfile");
+	if(logfile != NULL)
+	{
+		fclose(logfile);
+	}
 }
 
 
@@ -49,7 +95,8 @@ void warning(const char *header, const char *msg)
     al_destroy_display(d);
 }
 
-void dbg(const char *msg)
+void dbg(const char *msg, ...)
 {
 	printf(msg);
+	logfile_message(msg);
 }
