@@ -133,5 +133,7 @@ int main()
 	al_destroy_event_queue(ev_queue);
 	al_destroy_display(display);
 	
+	release_all();
+	
 	return EXIT_SUCCESS;
 }
